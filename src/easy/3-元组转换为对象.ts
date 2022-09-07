@@ -22,7 +22,11 @@
 
 /* _____________ 你的代码 _____________ */
 
-type TupleToObject<T extends readonly any[]> = any;
+// 题解：https://juejin.cn/post/7005376185278414861
+// K in T[number]就是遍历元组中的每个类型
+type TupleToObject<T extends readonly any[]> = {
+  [K in T[number]]: K;
+};
 
 /* _____________ 测试用例 _____________ */
 import type { Equal, Expect } from "@type-challenges/utils";
@@ -49,7 +53,6 @@ type cases = [
   >
 ];
 
-// @ts-expect-error
 type error = TupleToObject<[[1, 2], {}]>;
 
 /* _____________ 下一步 _____________ */

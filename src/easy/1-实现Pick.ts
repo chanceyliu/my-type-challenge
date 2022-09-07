@@ -33,6 +33,7 @@
 
 /* _____________ 你的代码 _____________ */
 
+// K和T是包含关系，S由K遍历而来，使用extends就确保了K必须至少要包含T的类型
 type MyPick<T, K extends keyof T> = {
   [S in K]: T[S];
 };
